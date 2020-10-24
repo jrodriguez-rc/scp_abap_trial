@@ -1,0 +1,29 @@
+projection;
+
+define behavior for ZRSLT_C_TRAVEL_U alias travel
+{
+  use create;
+  use update;
+  use delete;
+
+  use action set_status_booked;
+
+  use association _Booking { create; }
+}
+
+define behavior for ZRSLT_C_Booking_U alias booking
+{
+  use update;
+  use delete;
+
+  use association _BookSupplement { create; }
+  use association _Travel;
+}
+
+define behavior for ZRSLT_C_BookingSupplement_U alias bookingsupplement
+{
+  use update;
+  use delete;
+
+  use association _Travel;
+}

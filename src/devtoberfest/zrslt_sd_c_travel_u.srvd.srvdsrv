@@ -1,0 +1,6 @@
+@EndUserText.label: 'Service Definition for Travel'
+define service ZRSLT_SD_C_TRAVEL_U {
+  expose ZRSLT_C_TRAVEL_U as Travel;
+  expose ZRSLT_C_Booking_U as Booking;
+  expose ZRSLT_C_BookingSupplement_U as BookingSupplement;
+}
