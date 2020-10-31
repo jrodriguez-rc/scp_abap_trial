@@ -1,4 +1,4 @@
-CLASS zcl_rslt_hello_world_opensap DEFINITION
+CLASS zcl_rslt_rap_hello_world DEFINITION
   PUBLIC
   CREATE PUBLIC .
 
@@ -13,7 +13,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_rslt_hello_world_opensap IMPLEMENTATION.
+CLASS zcl_rslt_rap_hello_world IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.

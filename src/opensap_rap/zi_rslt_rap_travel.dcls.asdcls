@@ -1,0 +1,16 @@
+@EndUserText.label: 'Access control for ZI_RSLT_RAP_TRAVEL'
+@MappingRole: true
+define role ZI_RSLT_RAP_TRAVEL {
+    grant
+        select
+            on
+                ZI_RSLT_RAP_TRAVEL
+                    where
+                        CurrencyCode = 'EUR'
+                        and
+                        ( ( TravelStatus ) = aspect pfcg_auth(ZRSLTRAPTS, ZRSLTRAPTS, ACTVT = '03')
+                        or
+                        true    // Workaround: No se pueden asignar roles en el sistema Trial
+                        );
+                        
+}
