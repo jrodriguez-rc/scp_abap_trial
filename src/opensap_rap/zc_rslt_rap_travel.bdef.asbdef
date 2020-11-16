@@ -1,13 +1,14 @@
 projection;
+use draft;
 
 define behavior for ZC_RSLT_RAP_TRAVEL alias Travel
-use etag
+//use etag  " Not supported for Odata V2 in Fiori Elements UI
 {
   use create;
   use update;
   use delete;
 
-  use association _Booking { create; }
+  use association _Booking { create; with draft; }
 
   use action acceptTravel;
   use action rejectTravel;
@@ -15,10 +16,10 @@ use etag
 }
 
 define behavior for ZC_RSLT_RAP_BOOKING alias Booking
-use etag
+//use etag  " Not supported for Odata V2 in Fiori Elements UI
 {
   use update;
   use delete;
 
-  use association _Travel;
+  use association _Travel { with draft; }
 }

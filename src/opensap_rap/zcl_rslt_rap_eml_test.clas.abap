@@ -42,7 +42,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_rslt_rap_eml_test IMPLEMENTATION.
+CLASS ZCL_RSLT_RAP_EML_TEST IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
@@ -209,6 +209,4 @@ CLASS zcl_rslt_rap_eml_test IMPLEMENTATION.
     write( 'Delete done' ).
 
   ENDMETHOD.
-
-
 ENDCLASS.

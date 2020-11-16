@@ -25,7 +25,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_rslt_api_hub_manager IMPLEMENTATION.
+CLASS ZCL_RSLT_API_HUB_MANAGER IMPLEMENTATION.
 
 
   METHOD constructor.
@@ -76,6 +76,4 @@ CLASS zcl_rslt_api_hub_manager IMPLEMENTATION.
     result = response.
 
   ENDMETHOD.
-
-
 ENDCLASS.

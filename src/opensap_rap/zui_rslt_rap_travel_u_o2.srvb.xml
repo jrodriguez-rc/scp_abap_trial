@@ -4,13 +4,13 @@
   <asx:values>
    <SRVB>
     <METADATA>
-     <NAME>ZRSLT_UI_C_TRAVEL_U</NAME>
+     <NAME>ZUI_RSLT_RAP_TRAVEL_U_O2</NAME>
      <TYPE>SRVB/SVB</TYPE>
      <DESCRIPTION>Service Binding for Travel</DESCRIPTION>
      <LANGUAGE>EN</LANGUAGE>
      <LINKS>
       <item>
-       <HREF>/sap/bc/adt/businessservices/odatav2/ZRSLT_UI_C_TRAVEL_U</HREF>
+       <HREF>/sap/bc/adt/businessservices/odatav2/ZUI_RSLT_RAP_TRAVEL_U_O2</HREF>
        <REL>http://www.sap.com/categories/odatav2</REL>
        <TYPE>application/vnd.sap.adt.businessservices.odatav2.v2+xml</TYPE>
        <TITLE>ODATAV2</TITLE>
@@ -26,20 +26,20 @@
     </METADATA>
     <CONTENT>
      <BIND_TYPE_IMPL>
-      <NAME>ZRSLT_UI_C_TRAVEL_U</NAME>
+      <NAME>ZUI_RSLT_RAP_TRAVEL_U_O2</NAME>
      </BIND_TYPE_IMPL>
      <BIND_TYPE>ODATA</BIND_TYPE>
      <BIND_TYPE_VERSION>V2</BIND_TYPE_VERSION>
      <SERVICES>
       <item>
-       <SERVICE_NAME>ZRSLT_UI_C_TRAVEL_U</SERVICE_NAME>
+       <SERVICE_NAME>ZUI_RSLT_RAP_TRAVEL_U_O2</SERVICE_NAME>
        <SERVICE_CONTENT>
         <item>
          <SERVICE_VERSION>0001</SERVICE_VERSION>
          <SRVD_REF>
-          <URI>/sap/bc/adt/ddic/srvd/sources/zrslt_sd_c_travel_u</URI>
+          <URI>/sap/bc/adt/ddic/srvd/sources/zui_rslt_rap_travel_u</URI>
           <TYPE>SRVD/SRV</TYPE>
-          <NAME>ZRSLT_SD_C_TRAVEL_U</NAME>
+          <NAME>ZUI_RSLT_RAP_TRAVEL_U</NAME>
          </SRVD_REF>
         </item>
        </SERVICE_CONTENT>

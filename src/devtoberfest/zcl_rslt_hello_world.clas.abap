@@ -22,7 +22,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_rslt_hello_world IMPLEMENTATION.
+CLASS ZCL_RSLT_HELLO_WORLD IMPLEMENTATION.
 
 
   METHOD if_http_service_extension~handle_request.
@@ -73,6 +73,4 @@ CLASS zcl_rslt_hello_world IMPLEMENTATION.
     ENDCASE.
 
   ENDMETHOD.
-
-
 ENDCLASS.

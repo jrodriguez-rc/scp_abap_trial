@@ -81,7 +81,7 @@ ENDCLASS.
 
 
 
-CLASS zcm_rslt_rap IMPLEMENTATION.
+CLASS ZCM_RSLT_RAP IMPLEMENTATION.
 
 
   METHOD constructor ##ADT_SUPPRESS_GENERATION.
@@ -106,6 +106,4 @@ CLASS zcm_rslt_rap IMPLEMENTATION.
     me->agencyid   = |{ agencyid ALPHA = OUT }|.
 
   ENDMETHOD.
-
-
 ENDCLASS.

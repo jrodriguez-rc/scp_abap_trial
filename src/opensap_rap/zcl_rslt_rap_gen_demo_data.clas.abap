@@ -14,7 +14,7 @@ ENDCLASS.
 
 
 
-CLASS zcl_rslt_rap_gen_demo_data IMPLEMENTATION.
+CLASS ZCL_RSLT_RAP_GEN_DEMO_DATA IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
@@ -76,6 +76,4 @@ CLASS zcl_rslt_rap_gen_demo_data IMPLEMENTATION.
     out->write( 'Travel and booking demo data inserted.').
 
   ENDMETHOD.
-
-
 ENDCLASS.
