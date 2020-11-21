@@ -141,6 +141,12 @@ CLASS lhc_Travel IMPLEMENTATION.
 
     DATA:
       agencies TYPE SORTED TABLE OF /dmo/agency WITH UNIQUE KEY agency_id.
+    "<!-- New in Week 5
+    DATA:
+      filter_conditions TYPE if_rap_query_filter=>tt_name_range_pairs,
+      ranges_table      TYPE if_rap_query_filter=>tt_range_option,
+      business_data     TYPE TABLE OF zz_rslt_rap_travel_agency.
+    "--> New in Week 5
 
     " Read relevant travel instance data
     READ ENTITIES OF ZI_RSLT_RAP_Travel IN LOCAL MODE
@@ -152,21 +158,69 @@ CLASS lhc_Travel IMPLEMENTATION.
     agencies = CORRESPONDING #( travels DISCARDING DUPLICATES MAPPING agency_id = AgencyID EXCEPT * ).
     DELETE agencies WHERE agency_id IS INITIAL.
 
-    IF agencies IS NOT INITIAL. " Check if agency ID exist
-      SELECT FROM /dmo/agency FIELDS agency_id
-        FOR ALL ENTRIES IN @agencies
-        WHERE agency_id = @agencies-agency_id
-        INTO TABLE @DATA(agencies_db).
+    "<!-- Commented in Week 5
+*    IF agencies IS NOT INITIAL. " Check if agency ID exist
+*      SELECT FROM /dmo/agency FIELDS agency_id
+*        FOR ALL ENTRIES IN @agencies
+*        WHERE agency_id = @agencies-agency_id
+*        INTO TABLE @DATA(agencies_db).
+*    ENDIF.
+    "--> Commented in Week 5
+
+    "<!-- New in Week 5
+    IF agencies IS NOT INITIAL.
+
+      ranges_table = VALUE #( FOR agency IN agencies (  sign = 'I' option = 'EQ' low = agency-agency_id ) ).
+      filter_conditions = VALUE #( ( name = 'AGENCYID'  range = ranges_table ) ).
+
+      TRY.
+          "skip and top must not be used
+          "but an appropriate filter will be provided
+          NEW zcl_ce_rap_agency_1234( )->get_agencies(
+            EXPORTING
+              filter_cond    = filter_conditions
+              is_data_requested  = abap_true
+              is_count_requested = abap_false
+            IMPORTING
+              business_data  = business_data
+            ) .
+
+        CATCH /iwbep/cx_cp_remote
+              /iwbep/cx_gateway
+              cx_web_http_client_error
+              cx_http_dest_provider_error INTO DATA(exception).
+
+          DATA(exception_message) = cl_message_helper=>get_latest_t100_exception( exception )->if_message~get_text( ) .
+
+          LOOP AT travels INTO DATA(travel).
+            APPEND VALUE #( %tky = travel-%tky ) TO failed-travel.
+
+            APPEND VALUE #( %tky        = travel-%tky
+                            %state_area = 'VALIDATE_AGENCY'
+                            %msg        =  new_message_with_text( severity = if_abap_behv_message=>severity-error
+                                                                  text     = exception_message )
+                            %element-AgencyID = if_abap_behv=>mk-on )
+              TO reported-travel.
+          ENDLOOP.
+
+          RETURN.
+
+      ENDTRY.
+
     ENDIF.
+    "--> New in Week 5
 
     " Raise msg for non existing and initial agencyID
-    LOOP AT travels INTO DATA(travel).
+    LOOP AT travels INTO travel.    " New in Week 5
+*    LOOP AT travels INTO DATA(travel). " Commented in Week 5
+
       " Clear state messages that might exist
       APPEND VALUE #(  %tky        = travel-%tky
                        %state_area = 'VALIDATE_AGENCY' )
         TO reported-travel.
 
-      IF travel-AgencyID IS INITIAL OR NOT line_exists( agencies_db[ agency_id = travel-AgencyID ] ).
+*      IF travel-AgencyID IS INITIAL OR NOT line_exists( agencies_db[ agency_id = travel-AgencyID ] ). "-- Commented in Week 5
+      IF travel-AgencyID IS INITIAL OR NOT line_exists( business_data[ agencyid = travel-AgencyID ] ). "-- New in Week 5
         APPEND VALUE #( %tky = travel-%tky ) TO failed-travel.
 
         APPEND VALUE #( %tky        = travel-%tky
@@ -177,6 +231,7 @@ CLASS lhc_Travel IMPLEMENTATION.
                         %element-AgencyID = if_abap_behv=>mk-on )
           TO reported-travel.
       ENDIF.
+
     ENDLOOP.
 
   ENDMETHOD.

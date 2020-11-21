@@ -1,0 +1,4 @@
+@EndUserText.label: 'Travel Web API'
+define service ZAPI_RSLT_RAP_Travel {
+  expose ZC_RSLT_RAP_TRAVEL as Travel;
+}

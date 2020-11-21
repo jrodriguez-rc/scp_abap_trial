@@ -9,11 +9,12 @@ define root view entity ZC_RSLT_RAP_TRAVEL
   key TravelUUID,
       @Search.defaultSearchElement: true
       TravelID,
-      @Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_Agency', element: 'AgencyID'} }]
-      @ObjectModel.text.element: ['AgencyName']
+//      @Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_Agency', element: 'AgencyID'} }] // From week 5
+      @Consumption.valueHelpDefinition: [{ entity: { name: 'ZCE_RSLT_RAP_AGENCY', element: 'AgencyId'} }] // From week 5
+//      @ObjectModel.text.element: ['AgencyName'] // From week 5
       @Search.defaultSearchElement: true
       AgencyID,
-      _Agency.Name       as AgencyName,
+//      _Agency.Name       as AgencyName, // From week 5
       @Consumption.valueHelpDefinition: [{ entity: { name: '/DMO/I_Customer', element: 'CustomerID'} }]
       @ObjectModel.text.element: ['CustomerName']
       @Search.defaultSearchElement: true
