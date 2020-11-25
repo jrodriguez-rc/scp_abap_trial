@@ -27,7 +27,7 @@ CLASS ZCL_RSLT_HELLO_WORLD IMPLEMENTATION.
 
   METHOD if_http_service_extension~handle_request.
 
-    exercise_1_2( request  = request
+    exercise_1_1( request  = request
                   response = response ).
 
   ENDMETHOD.
