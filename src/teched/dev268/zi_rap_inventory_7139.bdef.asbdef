@@ -1,0 +1,37 @@
+managed;
+
+define behavior for ZI_RAP_INVENTORY_7139 alias Inventory
+implementation in class ZBP_I_RAP_Inventory_7139 unique
+persistent table zrap_inven_7139
+etag master LastChangedAt
+lock master
+
+{
+  field ( readonly ) InventoryID;
+  field ( numbering : managed ) UUID;
+
+  create;
+  update;
+  delete;
+
+  mapping for zrap_inven_7139
+  {
+    UUID = UUID;
+    InventoryID = INVENTORY_ID;
+    ProductID = PRODUCT_ID;
+    Quantity = QUANTITY;
+    QuantityUnit = QUANTITY_UNIT;
+    Price = PRICE;
+    CurrencyCode = CURRENCY_CODE;
+    Remark = REMARK;
+    NotAvailable = NOT_AVAILABLE;
+    CreatedBy = CREATED_BY;
+    CreatedAt = CREATED_AT;
+    LastChangedBy = LAST_CHANGED_BY;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+  determination CalculateInventoryID on modify { create; }
+  determination GetPrice on modify { field ProductID; }
+
+}

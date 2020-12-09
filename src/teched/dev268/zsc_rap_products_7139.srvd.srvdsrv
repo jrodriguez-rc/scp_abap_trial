@@ -1,0 +1,5 @@
+@EndUserText.label: 'ZSC_RAP_PRODUCTS_7139'
+@OData.schema.name: 'ZPDCDS_SRV'
+define service ZSC_RAP_PRODUCTS_7139 {
+ expose ZRAP_7139_SEPMRA_I_PRODUCT_E; 
+ } 

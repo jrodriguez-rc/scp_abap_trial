@@ -1,0 +1,131 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'Inventory', 
+    typeNamePlural: 'Inventorys', 
+    title: {
+      type: #STANDARD, 
+      label: 'Inventory', 
+      value: 'InventoryID'
+    }
+  }
+}
+annotate view ZC_RAP_Inventory_7139 with
+{
+  @UI.facet: [ {
+    id: 'idCollection', 
+    type: #COLLECTION, 
+    label: 'Inventory', 
+    position: 10 
+  }, 
+  {
+    id: 'idIdentification', 
+    parentId: 'idCollection', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'General Information', 
+    position: 10 
+  } ]
+  @UI.hidden: true
+  UUID;
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #HIGH, 
+    label: 'InventoryID'
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'InventoryID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  InventoryID;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #HIGH, 
+    label: 'ProductID'
+  } ]
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'ProductID'
+  } ]
+  ProductID;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #HIGH, 
+    label: 'Quantity'
+  } ]
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Quantity'
+  } ]
+  Quantity;
+  
+  @UI.lineItem: [ {
+    position: 50 , 
+    importance: #HIGH, 
+    label: 'QuantityUnit'
+  } ]
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'QuantityUnit'
+  } ]
+  QuantityUnit;
+  
+  @UI.lineItem: [ {
+    position: 60 , 
+    importance: #HIGH, 
+    label: 'Price'
+  } ]
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'Price'
+  } ]
+  Price;
+  
+  @UI.lineItem: [ {
+    position: 70 , 
+    importance: #HIGH, 
+    label: 'CurrencyCode'
+  } ]
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'CurrencyCode'
+  } ]
+  CurrencyCode;
+  
+  @UI.lineItem: [ {
+    position: 80 , 
+    importance: #HIGH, 
+    label: 'Remark'
+  } ]
+  @UI.identification: [ {
+    position: 80 , 
+    label: 'Remark'
+  } ]
+  Remark;
+  
+  @UI.lineItem: [ {
+    position: 90 , 
+    importance: #HIGH
+  } ]
+  @UI.identification: [ {
+    position: 90 
+  } ]
+  NotAvailable;
+  
+  @UI.hidden: true
+  CreatedBy;
+  
+  @UI.hidden: true
+  CreatedAt;
+  
+  @UI.hidden: true
+  LastChangedBy;
+  
+  @UI.hidden: true
+  LastChangedAt;
+}
