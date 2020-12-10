@@ -33,6 +33,11 @@ etag master LocalLastChangedAt
   validation validateCustomer on save { field CustomerID; create; }
   validation validateDates on save { field BeginDate, EndDate; create; }
 
+  determine action validation
+  {
+    validation(always) validateAgency;
+  }
+
   draft determine action Prepare
   {
     validation validateAgency;
